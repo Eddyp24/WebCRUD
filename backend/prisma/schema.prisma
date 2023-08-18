@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id       Int      @id @default(autoincrement())
+  nombre   String
+  contacto String?
+  direccion String?
+  // ... otros campos
+}
+
+model Perfil {
+  id       Int      @id @default(autoincrement())
+  usuario  String   @unique
+  correo   String   @unique
+  contrasena String  // Nota: Las contraseñas deben ser hasheadas y salteadas de manera segura
+  // ... otros campos
+}
+
+model Producto {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  descripcion String
+  precio      Float
+  // ... otros campos
+}

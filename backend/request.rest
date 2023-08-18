@@ -1,0 +1,15 @@
+GET  http://localhost:5000/products
+
+###
+GET http://localhost:5000/products/1
+
+###
+
+POST  http://localhost:5000/products
+Content-Type: application/json
+
+{
+    "nombre":"producto 1",
+    "descripcion":"alabre electrico",
+    "precio": 977
+}
