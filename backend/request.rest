@@ -13,3 +13,12 @@ Content-Type: application/json
     "descripcion":"alabre electrico",
     "precio": 977
 }
+
+###
+DELETE  http://localhost:5000/products/1
+
+###
+GET  http://localhost:5000/profile
+
+###
+GET http://localhost:5000/client

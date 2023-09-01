@@ -18,11 +18,17 @@ export const getProduct = async (req, res) => {
 export const getProductById = async (req, res) => {
     try {
         const response = await prisma.producto.findUnique({//aqui le hago busco en my base de datos solo por una unica identidad que seria el id
-            where:{
-                id: Number( req.params.id) //parara que sea un numero
+            
+            where: {
+               id: Number(req.params.id)
+              
             }
 
         });   //vamos a ecnontrar por id
+        if (!response) {
+            // If response is null, the product was not found
+            return res.status(404).json({ msg: 'Product not found' });
+        }
         res.status(200).json(response);
 
     } catch(error) {
@@ -58,9 +64,9 @@ export const updateProduct = async (req, res) => {
                 id: Number(req.params.id)
             },
             data:{
-                nombre: nombre,
+               nombre: nombre,
                 descripcion: descripcion,
-                precio: precio
+                precio: precio 
             }
             
         });
